@@ -15,7 +15,7 @@ namespace StudentManagement.API.Controllers
             return Ok(genders);
         }
 
-        [HttpGet("api/Gender/{GenderID}")]
+        [HttpGet("GenderById")]
         public ActionResult<Gender> GetGenderById(int GenderID)
         {
             Gender gender = new GenderDA().GetGenderByID(GenderID);
