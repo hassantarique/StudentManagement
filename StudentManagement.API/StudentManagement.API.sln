@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagement.API", "StudentManagement.API\StudentManagement.API.csproj", "{1F8DD4B5-D3D4-4888-8F3B-E82D94430D68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagement.DomainObjects", "StudentManagement.DomainObjects\StudentManagement.DomainObjects.csproj", "{E02CCF41-362F-45E7-B511-9C4BBD89D316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagement.ADODAL", "StudentManagementADO\StudentManagement.ADODAL.csproj", "{0CD5459A-2529-4B92-8A65-DBC5289C5AE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{1F8DD4B5-D3D4-4888-8F3B-E82D94430D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F8DD4B5-D3D4-4888-8F3B-E82D94430D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F8DD4B5-D3D4-4888-8F3B-E82D94430D68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E02CCF41-362F-45E7-B511-9C4BBD89D316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E02CCF41-362F-45E7-B511-9C4BBD89D316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E02CCF41-362F-45E7-B511-9C4BBD89D316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E02CCF41-362F-45E7-B511-9C4BBD89D316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CD5459A-2529-4B92-8A65-DBC5289C5AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD5459A-2529-4B92-8A65-DBC5289C5AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD5459A-2529-4B92-8A65-DBC5289C5AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD5459A-2529-4B92-8A65-DBC5289C5AE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
