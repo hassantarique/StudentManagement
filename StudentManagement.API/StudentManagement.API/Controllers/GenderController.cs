@@ -14,5 +14,12 @@ namespace StudentManagement.API.Controllers
             List<Gender> genders = new GenderDA().GetAllGenders();
             return Ok(genders);
         }
+
+        [HttpGet("api/Gender/{GenderID}")]
+        public ActionResult<Gender> GetGenderById(int GenderID)
+        {
+            Gender gender = new GenderDA().GetGenderByID(GenderID);
+            return Ok(gender);
+        }
     }
 }

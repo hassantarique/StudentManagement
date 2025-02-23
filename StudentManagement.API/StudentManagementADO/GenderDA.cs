@@ -40,9 +40,9 @@ namespace StudentManagement.ADODAL
             return genders;
         }
 
-        public List<Gender> GetGenderByID(int genderID)
+        public Gender GetGenderByID(int GenderID)
         {
-            List<Gender> gender = new List<Gender>();
+            Gender gender = null;
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -51,23 +51,24 @@ namespace StudentManagement.ADODAL
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    //Add the parameter
-                    command.Parameters.Add(new SqlParameter("GenderId", System.Data.SqlDbType.Int)
+                    //Add Input Parameter
+                    command.Parameters.Add(new SqlParameter("@GenderId", System.Data.SqlDbType.Int)
                     {
-                        Value = genderID
+                        Value = GenderID
                     });
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        if (reader.HasRows)
+                        if (reader.Read())
                         {
-                            while (reader.Read())
+                            gender = new Gender
                             {
-                            }
+                                GenderID = (int)reader["GenderID"],
+                                GenderDescription = reader["GenderDescription"].ToString()
+                            };
                         }
                     }
                 }
-
             }
             return gender;
         }
