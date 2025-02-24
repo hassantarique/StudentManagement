@@ -135,6 +135,28 @@ namespace StudentManagement.ADODAL
                 }
             }
         }
+        public void DeleteStudent(int studentId)
+        {
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    @"DELETE FROM 
+                                [Students]
+                      WHERE
+                           ID = @StudentId", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@StudentId", System.Data.SqlDbType.Int)
+                    {
+                        Value = studentId
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
 
     }
 }

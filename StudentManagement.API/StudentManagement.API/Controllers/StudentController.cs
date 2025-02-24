@@ -51,5 +51,15 @@ namespace StudentManagement.API.Controllers
             return Ok(new { message = "Student updated successfully." });
         }
 
+        [HttpDelete("DeleteStudent")]
+        public ActionResult DeleteStudent([FromQuery] int studentId)
+        {
+            var studentDA = new StudentDA();
+            studentDA.DeleteStudent(studentId);
+
+            return Ok(new { message = $"Student deleted successfully." });
+        }
+
+
     }
 }
