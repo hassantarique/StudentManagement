@@ -101,6 +101,40 @@ namespace StudentManagement.ADODAL
                 }
             }
         }
+        public void UpdateStudent(int studentId, string name, int genderID, DateTime dateOfBirth, decimal height, int weight)
+        {
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    @"UPDATE
+                            [Students]
+                      SET
+                         Name = @Name,
+                         GenderID = @GenderID,
+                         DateOfBirth = @DateOfBirth,
+                         Height = @Height,
+                         Weight = @Weight
+                      WHERE
+                            ID = @StudentId", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@StudentId", System.Data.SqlDbType.Int) { Value = studentId });
+
+                    command.Parameters.Add(new SqlParameter("@Name", System.Data.SqlDbType.NVarChar) { Value = name });
+
+                    command.Parameters.Add(new SqlParameter("@GenderID", System.Data.SqlDbType.Int) { Value = genderID });
+
+                    command.Parameters.Add(new SqlParameter("@DateOfBirth", System.Data.SqlDbType.DateTime) { Value = dateOfBirth });
+
+                    command.Parameters.Add(new SqlParameter("@Height", System.Data.SqlDbType.Decimal) { Value = height });
+
+                    command.Parameters.Add(new SqlParameter("@Weight", System.Data.SqlDbType.Int) { Value = weight });
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
 
     }
 }

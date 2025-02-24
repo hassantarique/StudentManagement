@@ -35,5 +35,21 @@ namespace StudentManagement.API.Controllers
 
             return Ok(new { message = "Student inserted successfully." });
         }
+
+        [HttpPut("UpdateStudent")]
+        public ActionResult UpdateStudent(
+            [FromQuery] int studentId,
+            [FromQuery] string name,
+            [FromQuery] int genderID,
+            [FromQuery] DateTime dateOfBirth,
+            [FromQuery] decimal height,
+            [FromQuery] int weight)
+        {
+            var studentDA = new StudentDA();
+            studentDA.UpdateStudent(studentId, name, genderID, dateOfBirth, height, weight);
+
+            return Ok(new { message = "Student updated successfully." });
+        }
+
     }
 }
