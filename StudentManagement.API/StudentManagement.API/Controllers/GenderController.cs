@@ -8,14 +8,14 @@ namespace StudentManagement.API.Controllers
     [ApiController]
     public class GenderController : Controller
     {
-        [HttpGet("AllGenders")]
+        [HttpGet("GetAllGenders")]
         public ActionResult<IEnumerable<Gender>> GetAllGenders()
         {
             List<Gender> genders = new GenderDA().GetAllGenders();
             return Ok(genders);
         }
 
-        [HttpGet("GenderById")]
+        [HttpGet("GetGenderById")]
         public ActionResult<Gender> GetGenderById(int GenderID)
         {
             Gender gender = new GenderDA().GetGenderByID(GenderID);

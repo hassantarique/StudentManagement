@@ -39,8 +39,6 @@ namespace StudentManagement.ADODAL
             }
             return students;
         }
-
-
         public Student GetStudentByID(int StudentID)
         {
             Student student = null;
@@ -73,5 +71,36 @@ namespace StudentManagement.ADODAL
             }
             return student;
         }
+        public void InsertStudent(string name, int genderID, DateTime dateOfBirth, decimal height, int weight)
+        {
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    @"INSERT INTO
+                                [Students] (Name,
+                                            GenderID,
+                                            DateOfBirth,
+                                            Height,
+                                            Weight)
+                      VALUES
+                            (@Name, @GenderID, @DateOfBirth, @Height, @Weight)", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Name", System.Data.SqlDbType.NVarChar) { Value = name });
+
+                    command.Parameters.Add(new SqlParameter("@GenderID", System.Data.SqlDbType.Int) { Value = genderID });
+
+                    command.Parameters.Add(new SqlParameter("@DateOfBirth", System.Data.SqlDbType.DateTime) { Value = dateOfBirth });
+
+                    command.Parameters.Add(new SqlParameter("@Height", System.Data.SqlDbType.Decimal) { Value = height });
+
+                    command.Parameters.Add(new SqlParameter("@Weight", System.Data.SqlDbType.Int) { Value = weight });
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
