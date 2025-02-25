@@ -141,12 +141,11 @@ namespace StudentManagement.ADODAL
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand(
-                    @"DELETE FROM 
-                                [Students]
-                      WHERE
-                           ID = @StudentId", connection))
+                using (SqlCommand command = new SqlCommand("DeleteStudent", connection))
                 {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    // Add parameter
                     command.Parameters.Add(new SqlParameter("@StudentId", System.Data.SqlDbType.Int)
                     {
                         Value = studentId
@@ -156,7 +155,6 @@ namespace StudentManagement.ADODAL
                 }
             }
         }
-
 
     }
 }
