@@ -23,18 +23,19 @@ namespace StudentManagement.API.Controllers
         }
 
         [HttpPost("InsertStudent")]
-        public ActionResult<Student> InsertStudent(
-            [FromQuery] string name,
-            [FromQuery] int genderID,
-            [FromQuery] DateTime dateOfBirth,
-            [FromQuery] decimal height,
-            [FromQuery] int weight)
+        public ActionResult InsertStudent([FromBody] Student student)
         {
+            if (student == null)
+            {
+                return BadRequest(new { message = "Invalid student data." });
+            }
+
             var studentDA = new StudentDA();
-            studentDA.InsertStudent(name, genderID, dateOfBirth, height, weight);
+            studentDA.InsertStudent(student);
 
             return Ok(new { message = "Student inserted successfully." });
         }
+
 
         [HttpPut("UpdateStudent")]
         public ActionResult UpdateStudent([FromBody] Student student)

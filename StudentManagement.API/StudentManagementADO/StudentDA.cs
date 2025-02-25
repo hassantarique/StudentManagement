@@ -71,36 +71,31 @@ namespace StudentManagement.ADODAL
             }
             return student;
         }
-        public void InsertStudent(string name, int genderID, DateTime dateOfBirth, decimal height, int weight)
+        public void InsertStudent(Student student)
         {
             using (SqlConnection connection = DBConnection.GetConnection())
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand(
-                    @"INSERT INTO
-                                [Students] (Name,
-                                            GenderID,
-                                            DateOfBirth,
-                                            Height,
-                                            Weight)
-                      VALUES
-                            (@Name, @GenderID, @DateOfBirth, @Height, @Weight)", connection))
+                using (SqlCommand command = new SqlCommand("InsertStudent", connection))
                 {
-                    command.Parameters.Add(new SqlParameter("@Name", System.Data.SqlDbType.NVarChar) { Value = name });
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    command.Parameters.Add(new SqlParameter("@GenderID", System.Data.SqlDbType.Int) { Value = genderID });
+                    command.Parameters.Add(new SqlParameter("@Name", System.Data.SqlDbType.NVarChar) { Value = student.Name });
 
-                    command.Parameters.Add(new SqlParameter("@DateOfBirth", System.Data.SqlDbType.DateTime) { Value = dateOfBirth });
+                    command.Parameters.Add(new SqlParameter("@GenderID", System.Data.SqlDbType.Int) { Value = student.GenderID });
 
-                    command.Parameters.Add(new SqlParameter("@Height", System.Data.SqlDbType.Decimal) { Value = height });
+                    command.Parameters.Add(new SqlParameter("@DateOfBirth", System.Data.SqlDbType.DateTime) { Value = student.DateOfBirth });
 
-                    command.Parameters.Add(new SqlParameter("@Weight", System.Data.SqlDbType.Int) { Value = weight });
+                    command.Parameters.Add(new SqlParameter("@Height", System.Data.SqlDbType.Decimal) { Value = student.Height });
+
+                    command.Parameters.Add(new SqlParameter("@Weight", System.Data.SqlDbType.Int) { Value = student.Weight });
 
                     command.ExecuteNonQuery();
                 }
             }
         }
+
         public void UpdateStudent(Student student)
         {
             using (SqlConnection connection = DBConnection.GetConnection())
