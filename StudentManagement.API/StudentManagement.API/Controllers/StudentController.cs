@@ -37,19 +37,19 @@ namespace StudentManagement.API.Controllers
         }
 
         [HttpPut("UpdateStudent")]
-        public ActionResult UpdateStudent(
-            [FromQuery] int studentId,
-            [FromQuery] string name,
-            [FromQuery] int genderID,
-            [FromQuery] DateTime dateOfBirth,
-            [FromQuery] decimal height,
-            [FromQuery] int weight)
+        public ActionResult UpdateStudent([FromBody] Student student)
         {
+            if (student == null || student.ID <= 0)
+            {
+                return BadRequest(new { message = "Student ID is required for update." }); //Because IDs are not Assigned automatically.
+            }
+
             var studentDA = new StudentDA();
-            studentDA.UpdateStudent(studentId, name, genderID, dateOfBirth, height, weight);
+            studentDA.UpdateStudent(student);
 
             return Ok(new { message = "Student updated successfully." });
         }
+
 
         [HttpDelete("DeleteStudent")]
         public ActionResult DeleteStudent([FromQuery] int studentId)
