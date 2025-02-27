@@ -4,12 +4,21 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:StudentManagement.MAUI"
-    Shell.FlyoutBehavior="Disabled"
+    xmlns:Views="clr-namespace:StudentManagement.MAUI.Views"
+    Shell.FlyoutBehavior="Flyout"
     Title="StudentManagement.MAUI">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Home" Icon="home_icon.png">
+        <ShellContent Title="Home"
+                          ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Student Options" Icon="student_icon.png">
+        <ShellContent ContentTemplate="{DataTemplate Views:StudentView}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Gender Options" Icon="gender_icon.png">
+        <ShellContent ContentTemplate="{DataTemplate Views:GenderView}" />
+    </FlyoutItem>
 
 </Shell>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentManagement.MAUI.Views.GenderView"
+             Title="Gender">
+    <Grid>
+        <Image Source="background.jpeg"
+               Aspect="AspectFill"
+               VerticalOptions="FillAndExpand" />
+
+        <BoxView Color="Black"
+                 Opacity="0.5"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand" />
+
+        <VerticalStackLayout Padding="20" Spacing="15" VerticalOptions="Center">
+
+            <Label Text="Gender Management"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <Button Text="View All Genders"
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="10"
+                    Padding="10"
+                    HorizontalOptions="Center"
+                    WidthRequest="250"/>
+
+            <Picker Title="Select Gender ID"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    FontSize="18"
+                    WidthRequest="250"
+                    HorizontalOptions="Center">
+            </Picker>
+
+            <Button Text="View Gender By ID"
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="10"
+                    Padding="10"
+                    HorizontalOptions="Center"
+                    WidthRequest="250"/>
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
