@@ -5,11 +5,11 @@ public partial class GenderView : ContentPage
     public GenderView()
     {
         InitializeComponent();
-        LoadGenderIds();
     }
 
-    private void LoadGenderIds()
+    protected override async void OnAppearing()
     {
-        
+        base.OnAppearing();
+
     }
 }

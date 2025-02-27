@@ -21,7 +21,7 @@
                    TextColor="White"
                    HorizontalOptions="Center" />
 
-            <Button Text="View All Genders"
+            <Button Text="View Both Genders"
                     BackgroundColor="Transparent"
                     BorderColor="White"
                     BorderWidth="2"
@@ -33,6 +33,7 @@
                     WidthRequest="250"/>
 
             <Picker Title="Select Gender ID"
+                    x:Name="genderIdPicker"
                     TextColor="White"
                     BackgroundColor="Transparent"
                     FontSize="18"
