@@ -15,7 +15,7 @@
 
         <VerticalStackLayout Padding="20" Spacing="15" VerticalOptions="Center">
 
-            <Label Text="Gender Management"
+            <Label Text="Page Inactive"
                    FontSize="28"
                    FontAttributes="Bold"
                    TextColor="White"

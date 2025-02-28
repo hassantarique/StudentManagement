@@ -1,13 +1,6 @@
 ﻿using Newtonsoft.Json;
 using StudentManagement.MAUI.Models;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using Windows.Media.Protection.PlayReady;
 
 namespace StudentManagement.MAUI.Services
 {
@@ -88,5 +81,24 @@ namespace StudentManagement.MAUI.Services
                 return false;
             }
         }
+
+        public async Task<bool> UpdateStudentAsync(Student student)
+        {
+            try
+            {
+                var json = JsonConvert.SerializeObject(student);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync($"{baseUrl}Student/UpdateStudent", content);
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
     }
 }

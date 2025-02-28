@@ -20,7 +20,7 @@ namespace StudentManagement.API.Controllers
         {
             Student student = new StudentDA().GetStudentByID(StudentID);
             return Ok(student);
-        }
+        } 
 
         [HttpPost("InsertStudent")]
         public ActionResult InsertStudent([FromBody] Student student)

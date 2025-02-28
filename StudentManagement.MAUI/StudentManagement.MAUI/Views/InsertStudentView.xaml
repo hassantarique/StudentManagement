@@ -14,18 +14,19 @@
                  VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand" />
 
-        <VerticalStackLayout Padding="30" Spacing="15"
+        <ScrollView>
+            <VerticalStackLayout Padding="30" Spacing="15"
                              VerticalOptions="Center"
                              HorizontalOptions="Center"
                              WidthRequest="320">
 
-            <Label Text="Insert Student"
+                <Label Text="Insert Student"
                    FontSize="24"
                    TextColor="White"
                    HorizontalOptions="Center"
                    Margin="0,0,0,10" />
 
-            <Entry x:Name="StudentNameEntry"
+                <Entry x:Name="StudentNameEntry"
                    Placeholder="Enter Student Name"
                    PlaceholderColor="Wheat"
                    BackgroundColor="Transparent"
@@ -34,7 +35,7 @@
                    HorizontalOptions="FillAndExpand"
                    Text="{Binding Name, Mode=TwoWay}" />
 
-            <Picker x:Name="genderIdPicker"
+                <Picker x:Name="genderIdPicker"
                     Title="Select Gender"
                     ItemsSource="{Binding Genders}" 
                     SelectedItem="{Binding SelectedGender, Mode=TwoWay}" 
@@ -42,16 +43,16 @@
                     TextColor="White"
                     BackgroundColor="Transparent"
                     HorizontalOptions="FillAndExpand">
-            </Picker>
+                </Picker>
 
-            <DatePicker x:Name="DateOfBirthPicker"
+                <DatePicker x:Name="DateOfBirthPicker"
                         TextColor="White"
                         BackgroundColor="Transparent"
                         Format="MMMM dd, yyyy"
                         HeightRequest="40"
                         HorizontalOptions="FillAndExpand" />
 
-            <Entry x:Name="HeightEntry"
+                <Entry x:Name="HeightEntry"
                    Placeholder="Enter Height (ft)"
                    PlaceholderColor="Wheat"
                    BackgroundColor="Transparent"
@@ -61,7 +62,7 @@
                    HorizontalOptions="FillAndExpand"
                    Text="{Binding Height, Mode=TwoWay}"/>
 
-            <Entry x:Name="WeightEntry"
+                <Entry x:Name="WeightEntry"
                    Placeholder="Enter Weight (kg)"
                    PlaceholderColor="Wheat"
                    BackgroundColor="Transparent"
@@ -71,7 +72,7 @@
                    HorizontalOptions="FillAndExpand"
                    Text="{Binding Weight, Mode=TwoWay}"/>
 
-            <Button Text="Submit"
+                <Button Text="Submit"
                     BackgroundColor="Transparent"
                     BorderColor="White"
                     BorderWidth="1"
@@ -80,7 +81,7 @@
                     HeightRequest="40"
                     Clicked="OnInsertStudentClicked" />
 
-            <Button Text="Cancel"
+                <Button Text="Cancel"
                     BackgroundColor="Transparent"
                     BorderColor="Wheat"
                     BorderWidth="1"
@@ -89,7 +90,8 @@
                     HeightRequest="40"
                     Clicked="OnCancelClicked" />
 
-        </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
     </Grid>
 
 </ContentPage>

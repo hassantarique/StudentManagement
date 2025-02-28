@@ -49,8 +49,21 @@ namespace StudentManagement.MAUI.Views
 
         private async void OnUpdateStudentClicked(object sender, EventArgs e)
         {
-            
+            if (int.TryParse(StudentIdEntryTwo.Text, out int studentId))
+            {
+                await _viewModel.LoadStudentById(studentId);
+
+                var updatePage = new StudentUpdateView(_viewModel);
+                await Navigation.PushAsync(updatePage);
+            }
+            else
+            {
+                await DisplayAlert("Error", "Please enter a valid Student ID.", "OK");
+            }
         }
+
+
+
 
         private async void OnDeleteStudentClicked(object sender, EventArgs e)
         {

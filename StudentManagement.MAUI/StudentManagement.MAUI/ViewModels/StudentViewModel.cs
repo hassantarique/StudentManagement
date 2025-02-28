@@ -10,10 +10,19 @@ namespace StudentManagement.MAUI.ViewModels
     public class StudentViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private string _name;
-        public string Name
+        public string StudentName
         {
             get => _name;
-            set { _name = value; OnPropertyChanged(); }
+            set
+            {
+                _name = value; OnPropertyChanged();
+                if (SelectedStudent != null)
+                {
+                    SelectedStudent.Name = value;
+                }
+            }
+
+
         }
 
         private Gender _selectedGender;
@@ -36,16 +45,14 @@ namespace StudentManagement.MAUI.ViewModels
             get => _height;
             set
             {
+                _height = value;
+                OnPropertyChanged();
+
                 if (decimal.TryParse(value, out decimal parsedHeight))
                 {
-                    _height = value;
-                    _heightValue = parsedHeight;  // Store actual decimal value
+                    _heightValue = parsedHeight;
+                    SelectedStudent.Height = parsedHeight;
                 }
-                else
-                {
-                    _height = string.Empty;  // Reset if invalid input
-                }
-                OnPropertyChanged();
             }
         }
         private decimal _heightValue;  // Actual numeric value
@@ -56,26 +63,17 @@ namespace StudentManagement.MAUI.ViewModels
             get => _weight;
             set
             {
+                _weight = value;
+                OnPropertyChanged();
+
                 if (int.TryParse(value, out int parsedWeight))
                 {
-                    _weight = value;
-                    _weightValue = parsedWeight;  // Store actual int value
+                    _weightValue = parsedWeight;
+                    SelectedStudent.Weight = parsedWeight;
                 }
-                else
-                {
-                    _weight = string.Empty;  // Reset if invalid input
-                }
-                OnPropertyChanged();
             }
         }
         private int _weightValue;  // Actual numeric value
-
-        public StudentViewModel()
-        {
-            _apiService = new ApiService();
-            Students = new ObservableCollection<Student>();
-            Task.Run(async () => await LoadStudents());
-        }
 
         private Student _selectedStudent;
         public Student SelectedStudent
@@ -85,7 +83,25 @@ namespace StudentManagement.MAUI.ViewModels
             {
                 _selectedStudent = value;
                 OnPropertyChanged();
+
+                if (_selectedStudent != null)
+                {
+                    StudentName = _selectedStudent.Name;
+                    SelectedGender = Genders.FirstOrDefault(g => g.GenderId == _selectedStudent.GenderID);
+                    DateOfBirth = _selectedStudent.DateOfBirth;
+                    Height = _selectedStudent.Height.ToString();
+                    Weight = _selectedStudent.Weight.ToString();
+                }
             }
+        }
+
+
+        public StudentViewModel()
+        {
+            _apiService = new ApiService();
+            Students = new ObservableCollection<Student>();
+            Task.Run(async () => await LoadStudents());
+            UpdateStudentCommand = new Command(async () => await UpdateStudent());
         }
 
         private readonly ApiService _apiService;
@@ -122,7 +138,7 @@ namespace StudentManagement.MAUI.ViewModels
         }
         public async Task InsertStudent()
         {
-            if (string.IsNullOrWhiteSpace(Name) || SelectedGender == null)
+            if (string.IsNullOrWhiteSpace(StudentName) || SelectedGender == null)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Please fill all fields.", "OK");
                 return;
@@ -130,7 +146,7 @@ namespace StudentManagement.MAUI.ViewModels
 
             var student = new Student
             {
-                Name = Name,
+                Name = StudentName,
                 GenderID = SelectedGender.GenderId,
                 DateOfBirth = DateOfBirth,
                 Height = _heightValue,
@@ -148,5 +164,37 @@ namespace StudentManagement.MAUI.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", "Failed to add student.", "OK");
             }
         }
+        public ICommand UpdateStudentCommand { get; }
+        public async Task<bool> UpdateStudent()
+        {
+            if (string.IsNullOrWhiteSpace(StudentName) || SelectedGender == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Please fill all fields.", "OK");
+                return false;
+            }
+
+            var updatedStudent = new Student
+            {
+                ID = SelectedStudent.ID,
+                Name = StudentName,
+                GenderID = SelectedGender.GenderId,
+                DateOfBirth = DateOfBirth,
+                Height = _heightValue,
+                Weight = _weightValue
+            };
+
+            var success = await _apiService.UpdateStudentAsync(updatedStudent);
+            if (success)
+            {
+                await Application.Current.MainPage.DisplayAlert("Success", "Student updated successfully!", "OK");
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
+
+            return success;
+        }
+
+
+
+
     }
 }
