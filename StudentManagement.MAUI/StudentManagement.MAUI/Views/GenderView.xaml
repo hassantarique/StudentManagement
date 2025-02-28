@@ -32,13 +32,15 @@
                     HorizontalOptions="Center"
                     WidthRequest="250"/>
 
-            <Picker Title="Select Gender ID"
-                    x:Name="genderIdPicker"
+            <Picker x:Name="genderIdPicker"
+                    Title="Select Gender"
+                    ItemsSource="{Binding Genders}" 
+                    SelectedItem="{Binding SelectedGender, Mode=TwoWay}" 
+                    ItemDisplayBinding="{Binding GenderDescription}"
                     TextColor="White"
                     BackgroundColor="Transparent"
-                    FontSize="18"
                     WidthRequest="250"
-                    HorizontalOptions="Center">
+                    HorizontalOptions="FillAndExpand">
             </Picker>
 
             <Button Text="View Gender By ID"

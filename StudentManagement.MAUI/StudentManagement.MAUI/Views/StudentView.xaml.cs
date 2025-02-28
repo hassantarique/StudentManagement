@@ -44,7 +44,7 @@ namespace StudentManagement.MAUI.Views
 
         private async void OnInsertStudentClicked(object sender, EventArgs e)
         {
-            
+            await Navigation.PushAsync(new InsertStudentView());
         }
 
         private async void OnUpdateStudentClicked(object sender, EventArgs e)

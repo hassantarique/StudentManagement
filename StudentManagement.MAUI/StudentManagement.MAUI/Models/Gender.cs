@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace StudentManagement.MAUI.Models
 {
-    internal class Gender
+    public class Gender
     {
+        public int GenderId { get; set; }
+        public string GenderDescription { get; set; }
     }
 }

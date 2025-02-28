@@ -2,11 +2,91 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentManagement.MAUI.Views.InsertStudentView"
-             Title="InsertStudentView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Insert Student">
+
+    <Grid>
+        <Image Source="background.jpeg"
+               Aspect="AspectFill"
+               VerticalOptions="FillAndExpand" />
+
+        <BoxView Color="Black"
+                 Opacity="0.4"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand" />
+
+        <VerticalStackLayout Padding="30" Spacing="15"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             WidthRequest="320">
+
+            <Label Text="Insert Student"
+                   FontSize="24"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10" />
+
+            <Entry x:Name="StudentNameEntry"
+                   Placeholder="Enter Student Name"
+                   PlaceholderColor="Wheat"
+                   BackgroundColor="Transparent"
+                   TextColor="Wheat"
+                   HeightRequest="40"
+                   HorizontalOptions="FillAndExpand" />
+
+            <Picker x:Name="genderIdPicker"
+                    Title="Select Gender"
+                    ItemsSource="{Binding Genders}" 
+                    SelectedItem="{Binding SelectedGender, Mode=TwoWay}" 
+                    ItemDisplayBinding="{Binding GenderDescription}"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand">
+            </Picker>
+
+            <DatePicker x:Name="DateOfBirthPicker"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        Format="MMMM dd, yyyy"
+                        HeightRequest="40"
+                        HorizontalOptions="FillAndExpand" />
+
+            <Entry x:Name="HeightEntry"
+                   Placeholder="Enter Height (ft)"
+                   PlaceholderColor="Wheat"
+                   BackgroundColor="Transparent"
+                   TextColor="Wheat"
+                   Keyboard="Numeric"
+                   HeightRequest="40"
+                   HorizontalOptions="FillAndExpand" />
+
+            <Entry x:Name="WeightEntry"
+                   Placeholder="Enter Weight (kg)"
+                   PlaceholderColor="Wheat"
+                   BackgroundColor="Transparent"
+                   TextColor="Wheat"
+                   Keyboard="Numeric"
+                   HeightRequest="40"
+                   HorizontalOptions="FillAndExpand" />
+
+            <Button Text="Submit"
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="40"
+                    Clicked="OnInsertStudentClicked" />
+
+            <Button Text="Cancel"
+                    BackgroundColor="Transparent"
+                    BorderColor="Wheat"
+                    BorderWidth="1"
+                    TextColor="Wheat"
+                    CornerRadius="8"
+                    HeightRequest="40"
+                    Clicked="OnCancelClicked" />
+
+        </VerticalStackLayout>
+    </Grid>
+
 </ContentPage>

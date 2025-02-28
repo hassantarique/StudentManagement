@@ -49,5 +49,26 @@ namespace StudentManagement.MAUI.Services
                 return new Student { Name = "Error fetching student", ID = -1 }; // Return a meaningful error response
             }
         }
+
+        public async Task<IEnumerable<Gender>> GetGenders()
+        {
+            try
+            {
+                var response = await client.GetAsync(baseUrl + "Gender/GetAllGenders");
+
+                if (!response.IsSuccessStatusCode) return new List<Gender>();
+                var json = await response.Content.ReadAsStringAsync();
+
+                return JsonConvert.DeserializeObject<List<Gender>>(json) ?? new List<Gender>();
+                {
+
+                }
+            }
+            catch
+            {
+
+                return new List<Gender>();
+            }
+        }
     }
 }
