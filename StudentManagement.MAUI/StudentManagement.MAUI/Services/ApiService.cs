@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Windows.Media.Protection.PlayReady;
 
 namespace StudentManagement.MAUI.Services
 {
@@ -68,6 +70,22 @@ namespace StudentManagement.MAUI.Services
             {
 
                 return new List<Gender>();
+            }
+        }
+
+        public async Task<bool> AddStudentAsync(Student student)
+        {
+            try
+            {
+                var json = JsonConvert.SerializeObject(student);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(baseUrl + "Student/InsertStudent", content);
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

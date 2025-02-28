@@ -4,27 +4,28 @@ namespace StudentManagement.MAUI.Views;
 
 public partial class InsertStudentView : ContentPage
 {
-    private readonly GenderViewModel genderViewModel;
-	public InsertStudentView()
-	{
-		InitializeComponent();
+    private readonly StudentViewModel _studentViewModel;
 
-        genderViewModel = new GenderViewModel();
-        BindingContext = genderViewModel;
+    public InsertStudentView()
+    {
+        InitializeComponent();
+        _studentViewModel = new StudentViewModel();
+        BindingContext = _studentViewModel;
     }
+
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await genderViewModel.LoadGenders();
+        await _studentViewModel.LoadGenders();
     }
 
-    private void OnInsertStudentClicked(object sender, EventArgs e)
+    private async void OnInsertStudentClicked(object sender, EventArgs e)
     {
-
+        await _studentViewModel.InsertStudent();
     }
 
-    private void OnCancelClicked(object sender, EventArgs e)
+    private async void OnCancelClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PopAsync();
     }
 }

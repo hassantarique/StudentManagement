@@ -31,7 +31,8 @@
                    BackgroundColor="Transparent"
                    TextColor="Wheat"
                    HeightRequest="40"
-                   HorizontalOptions="FillAndExpand" />
+                   HorizontalOptions="FillAndExpand"
+                   Text="{Binding Name, Mode=TwoWay}" />
 
             <Picker x:Name="genderIdPicker"
                     Title="Select Gender"
@@ -57,7 +58,8 @@
                    TextColor="Wheat"
                    Keyboard="Numeric"
                    HeightRequest="40"
-                   HorizontalOptions="FillAndExpand" />
+                   HorizontalOptions="FillAndExpand"
+                   Text="{Binding Height, Mode=TwoWay}"/>
 
             <Entry x:Name="WeightEntry"
                    Placeholder="Enter Weight (kg)"
@@ -66,7 +68,8 @@
                    TextColor="Wheat"
                    Keyboard="Numeric"
                    HeightRequest="40"
-                   HorizontalOptions="FillAndExpand" />
+                   HorizontalOptions="FillAndExpand"
+                   Text="{Binding Weight, Mode=TwoWay}"/>
 
             <Button Text="Submit"
                     BackgroundColor="Transparent"

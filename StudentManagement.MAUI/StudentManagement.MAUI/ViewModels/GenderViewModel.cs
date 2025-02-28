@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace StudentManagement.MAUI.ViewModels
 {
+    //This view model is obsolete and not in use
     public class GenderViewModel : BaseViewModel, INotifyPropertyChanged
     {
         ApiService _apiService = new ApiService();
