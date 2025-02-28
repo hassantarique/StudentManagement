@@ -1,0 +1,63 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentManagement.MAUI.Views.IdStudentView"
+             Title="Student Details">
+
+    <Grid>
+        <Image Source="background.jpeg"
+               Aspect="AspectFill"
+               VerticalOptions="FillAndExpand" />
+
+        <BoxView Color="Black"
+                 Opacity="0.4"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand" />
+
+        <VerticalStackLayout Padding="30" Spacing="15"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             WidthRequest="320">
+
+            <Label Text="Student Details"
+                   FontSize="24"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10" />
+
+            <Label Text="Name:"
+                   FontSize="18"
+                   TextColor="White" />
+            <Label Text="{Binding SelectedStudent.Name}"
+                   FontSize="16"
+                   TextColor="Wheat" />
+
+            <Label Text="Gender:"
+                   FontSize="18"
+                   TextColor="White" />
+            <Label Text="{Binding SelectedStudent.Gender}"
+                   FontSize="16"
+                   TextColor="Wheat" />
+
+            <Label Text="Date of Birth:"
+                   FontSize="18"
+                   TextColor="White" />
+            <Label Text="{Binding SelectedStudent.DateOfBirth, StringFormat='{0:yyyy-MM-dd}'}"
+                   FontSize="16"
+                   TextColor="Wheat" />
+
+            <Label Text="Height:"
+                   FontSize="18"
+                   TextColor="White" />
+            <Label Text="{Binding SelectedStudent.Height}"
+                   FontSize="16"
+                   TextColor="Wheat" />
+
+            <Label Text="Weight:"
+                   FontSize="18"
+                   TextColor="White" />
+            <Label Text="{Binding SelectedStudent.Weight}"
+                   FontSize="16"
+                   TextColor="Wheat" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

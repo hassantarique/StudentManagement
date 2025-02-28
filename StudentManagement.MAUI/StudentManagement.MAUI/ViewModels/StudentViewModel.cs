@@ -1,15 +1,13 @@
 ﻿using StudentManagement.MAUI.Models;
 using StudentManagement.MAUI.Services;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace StudentManagement.MAUI.ViewModels
 {
-    public class StudentViewModel : BaseViewModel
+    public class StudentViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        private readonly ApiService _apiService;
-        public ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
-
         public StudentViewModel()
         {
             _apiService = new ApiService();
@@ -17,6 +15,20 @@ namespace StudentManagement.MAUI.ViewModels
             Task.Run(async () => await LoadStudents());
         }
 
+        private Student _selectedStudent;
+        public Student SelectedStudent
+        {
+            get => _selectedStudent;
+            set
+            {
+                _selectedStudent = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private readonly ApiService _apiService;
+
+        public ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
 
         public async Task LoadStudents()
         {
@@ -30,5 +42,13 @@ namespace StudentManagement.MAUI.ViewModels
                 }
             }
         }
+
+        public async Task LoadStudentById(int studentId)
+        {
+            SelectedStudent = await _apiService.GetStudentByIdAsync(studentId);
+
+            OnPropertyChanged();
+        }
+
     }
 }

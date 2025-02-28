@@ -30,5 +30,24 @@ namespace StudentManagement.MAUI.Services
                 return new List<Student>();
             }
         }
+
+        public async Task<Student?> GetStudentByIdAsync(int studentId)
+        {
+            try
+            {
+                var response = await client.GetAsync($"{baseUrl}Student/GetStudentById?StudentID={studentId}");
+
+                if (!response.IsSuccessStatusCode)
+                    throw new Exception($"Error: {response.StatusCode}, {await response.Content.ReadAsStringAsync()}");
+
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Student>(json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetStudentByIdAsync: {ex.Message}");
+                return new Student { Name = "Error fetching student", ID = -1 }; // Return a meaningful error response
+            }
+        }
     }
 }

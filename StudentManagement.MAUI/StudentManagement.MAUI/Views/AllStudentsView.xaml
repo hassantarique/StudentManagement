@@ -19,7 +19,7 @@
             <VerticalStackLayout Padding="20" Spacing="20"
                                  VerticalOptions="Start"
                                  HorizontalOptions="FillAndExpand"
-                                 WidthRequest="340">
+                                 WidthRequest="680">
 
                 <Label Text="All Students"
                        FontSize="24"
