@@ -75,6 +75,15 @@
                     HeightRequest="40"
                     Clicked="OnInsertStudentClicked" />
 
+            <Entry x:Name="StudentIdEntryTwo"
+                       Placeholder="Enter Student ID to Update"
+                       PlaceholderColor="Wheat"
+                       BackgroundColor="Transparent"
+                       TextColor="Wheat"
+                       Keyboard="Numeric"
+                       HeightRequest="40"
+                       HorizontalOptions="FillAndExpand" />
+            
             <Button Text="Update Student"
                     BackgroundColor="Transparent"
                     BorderColor="White"

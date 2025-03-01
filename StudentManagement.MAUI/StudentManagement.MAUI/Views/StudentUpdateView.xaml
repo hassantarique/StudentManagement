@@ -2,11 +2,43 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentManagement.MAUI.Views.StudentUpdateView"
-             Title="StudentUpdateView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Update Student">
+    <Grid>
+
+        <Image Source="background.jpeg"
+       Aspect="AspectFill"
+       VerticalOptions="FillAndExpand" />
+
+        <BoxView Color="Black"
+         Opacity="0.4"
+         VerticalOptions="FillAndExpand"
+         HorizontalOptions="FillAndExpand" />
+
+        <ScrollView>
+            <VerticalStackLayout Padding="30" Spacing="15"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             WidthRequest="320">
+
+                <Label Text="Update Student" FontSize="24" HorizontalOptions="Center" />
+
+                <Entry Text="{Binding StudentId}" IsReadOnly="True" />
+                <!--To Store id for update-->
+
+                <Entry Text="{Binding Name}" Placeholder="Name" />
+
+                <Picker Title="Select Gender" ItemsSource="{Binding Genders}"
+                    SelectedItem="{Binding SelectedGender, Mode=TwoWay}"
+                    ItemDisplayBinding="{Binding GenderDescription}" />
+
+                <DatePicker Date="{Binding DateOfBirth}" />
+
+                <Entry Text="{Binding Height}" Placeholder="Height" Keyboard="Numeric" />
+                <Entry Text="{Binding Weight}" Placeholder="Weight" Keyboard="Numeric" />
+
+                <Button Text="Submit" 
+                    Clicked="OnUpdateStudentClicked"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
