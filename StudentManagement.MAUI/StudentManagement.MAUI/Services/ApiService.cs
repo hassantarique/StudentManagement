@@ -86,10 +86,29 @@ namespace StudentManagement.MAUI.Services
         {
             try
             {
+                if (student.ID == 0)
+                {
+                    return false;
+                }
+
                 var json = JsonConvert.SerializeObject(student);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PutAsync($"{baseUrl}Student/UpdateStudent", content);
+                var response = await client.PutAsync(baseUrl + "Student/UpdateStudent", content);
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteStudentAsync(int studentId)
+        {
+            try
+            {
+                var response = await client.DeleteAsync($"{baseUrl}Student/DeleteStudent?StudentID={studentId}");
                 return response.IsSuccessStatusCode;
             }
             catch
@@ -97,8 +116,6 @@ namespace StudentManagement.MAUI.Services
                 return false;
             }
         }
-
-
 
     }
 }

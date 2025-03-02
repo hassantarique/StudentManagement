@@ -81,30 +81,30 @@ namespace StudentManagement.MAUI.ViewModels
             get => _selectedStudent;
             set
             {
-                _selectedStudent = value;
-                OnPropertyChanged();
-
-                if (_selectedStudent != null)
+                if (_selectedStudent != value)
                 {
-                    StudentName = _selectedStudent.Name;
-                    SelectedGender = Genders.FirstOrDefault(g => g.GenderId == _selectedStudent.GenderID);
-                    DateOfBirth = _selectedStudent.DateOfBirth;
-                    Height = _selectedStudent.Height.ToString();
-                    Weight = _selectedStudent.Weight.ToString();
+                    _selectedStudent = value;
+                    OnPropertyChanged(nameof(StudentId)); // Notify UI
                 }
             }
         }
 
+        private int _studentId;
+        public int StudentId
+        {
+            get => _studentId;
+            set { _studentId = value; OnPropertyChanged(); }
+        }
+
+
+        private readonly ApiService _apiService;
 
         public StudentViewModel()
         {
             _apiService = new ApiService();
             Students = new ObservableCollection<Student>();
             Task.Run(async () => await LoadStudents());
-            UpdateStudentCommand = new Command(async () => await UpdateStudent());
         }
-
-        private readonly ApiService _apiService;
 
         public ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
         public ObservableCollection<Gender> Genders { get; set; } = new ObservableCollection<Gender>();
@@ -132,9 +132,17 @@ namespace StudentManagement.MAUI.ViewModels
         }
         public async Task LoadStudentById(int studentId)
         {
-            SelectedStudent = await _apiService.GetStudentByIdAsync(studentId);
-
-            OnPropertyChanged();
+            var student = await _apiService.GetStudentByIdAsync(studentId);
+            if (student != null)
+            {
+                StudentId = student.ID; // Store ID 
+                Name = student.Name;
+                SelectedGender = Genders.FirstOrDefault(g => g.GenderId == student.GenderID);
+                DateOfBirth = student.DateOfBirth;
+                Height = student.Height.ToString();
+                Weight = student.Weight.ToString();
+            }
+            OnPropertyChanged(nameof(StudentId)); // Ensure UI update
         }
         public async Task InsertStudent()
         {
@@ -164,37 +172,41 @@ namespace StudentManagement.MAUI.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", "Failed to add student.", "OK");
             }
         }
-        public ICommand UpdateStudentCommand { get; }
-        public async Task<bool> UpdateStudent()
+
+        public async Task UpdateStudent()
         {
-            if (string.IsNullOrWhiteSpace(StudentName) || SelectedGender == null)
+            if (string.IsNullOrWhiteSpace(Name) || SelectedGender == null)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Please fill all fields.", "OK");
-                return false;
+                return;
             }
 
-            var updatedStudent = new Student
+            var student = new Student
             {
-                ID = SelectedStudent.ID,
-                Name = StudentName,
+                ID = StudentId, // Include ID for update
+                Name = Name,
                 GenderID = SelectedGender.GenderId,
                 DateOfBirth = DateOfBirth,
                 Height = _heightValue,
                 Weight = _weightValue
             };
 
-            var success = await _apiService.UpdateStudentAsync(updatedStudent);
+            var success = await _apiService.UpdateStudentAsync(student);
             if (success)
             {
                 await Application.Current.MainPage.DisplayAlert("Success", "Student updated successfully!", "OK");
                 await Application.Current.MainPage.Navigation.PopAsync();
             }
-
-            return success;
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Failed to update student.", "OK");
+            }
         }
 
-
-
+        public async Task<bool> DeleteStudentAsync(int studentId)
+        {
+            return await _apiService.DeleteStudentAsync(studentId);
+        }
 
     }
 }

@@ -13,68 +13,67 @@
                  Opacity="0.4"
                  VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand" />
-
         <ScrollView>
             <VerticalStackLayout Padding="30" Spacing="15"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center"
-                                 WidthRequest="320">
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             WidthRequest="320">
 
                 <Label Text="Student Management"
-                       FontSize="24"
-                       TextColor="White"
-                       HorizontalOptions="Center"
-                       Margin="0,0,0,10" />
+                   FontSize="24"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10" />
 
                 <Label Text="View Students"
-                       FontSize="18"
-                       TextColor="White"
-                       Opacity="0.7"
-                       HorizontalOptions="Center"
-                       Margin="0,10,0,5" />
+                   FontSize="18"
+                   TextColor="White"
+                   Opacity="0.7"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,5" />
 
                 <Button Text="View All Students"
-                        BackgroundColor="Transparent"
-                        BorderColor="White"
-                        BorderWidth="1"
-                        TextColor="White"
-                        CornerRadius="8"
-                        HeightRequest="40"
-                        Clicked="OnViewAllStudentsClicked" />
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="40"
+                    Clicked="OnViewAllStudentsClicked" />
 
                 <Entry x:Name="StudentIdEntry"
-                       Placeholder="Enter Student ID to View"
-                       PlaceholderColor="Wheat"
-                       BackgroundColor="Transparent"
-                       TextColor="Wheat"
-                       Keyboard="Numeric"
-                       HeightRequest="40"
-                       HorizontalOptions="FillAndExpand" />
+                   Placeholder="Enter Student ID"
+                   PlaceholderColor="Wheat"
+                   BackgroundColor="Transparent"
+                   TextColor="Wheat"
+                   Keyboard="Numeric"
+                   HeightRequest="40"
+                   HorizontalOptions="FillAndExpand" />
 
                 <Button Text="View Student by ID"
-                        BackgroundColor="Transparent"
-                        BorderColor="White"
-                        BorderWidth="1"
-                        TextColor="White"
-                        CornerRadius="8"
-                        HeightRequest="40"
-                        Clicked="OnViewStudentByIdClicked" />
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="40"
+                    Clicked="OnViewStudentByIdClicked" />
 
                 <Label Text="Manage Students"
-                       FontSize="18"
-                       TextColor="White"
-                       Opacity="0.7"
-                       HorizontalOptions="Center"
-                       Margin="0,15,0,5" />
+                   FontSize="18"
+                   TextColor="White"
+                   Opacity="0.7"
+                   HorizontalOptions="Center"
+                   Margin="0,15,0,5" />
 
                 <Button Text="Insert Student"
-                        BackgroundColor="Transparent"
-                        BorderColor="White"
-                        BorderWidth="1"
-                        TextColor="White"
-                        CornerRadius="8"
-                        HeightRequest="40"
-                        Clicked="OnInsertStudentClicked" />
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="40"
+                    Clicked="OnInsertStudentClicked" />
 
                 <Entry x:Name="StudentIdEntryTwo"
                        Placeholder="Enter Student ID to Update"
@@ -86,38 +85,38 @@
                        HorizontalOptions="FillAndExpand" />
 
                 <Button Text="Update Student"
-                        BackgroundColor="Transparent"
-                        BorderColor="White"
-                        BorderWidth="1"
-                        TextColor="White"
-                        CornerRadius="8"
-                        HeightRequest="40"
-                        Clicked="OnUpdateStudentClicked" />
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="40"
+                    Clicked="OnUpdateStudentClicked" />
 
                 <Label Text="Delete Student"
-                       FontSize="18"
-                       TextColor="White"
-                       Opacity="0.7"
-                       HorizontalOptions="Center"
-                       Margin="0,15,0,5" />
+                   FontSize="18"
+                   TextColor="White"
+                   Opacity="0.7"
+                   HorizontalOptions="Center"
+                   Margin="0,15,0,5" />
 
                 <Entry x:Name="DeleteStudentIdEntry"
-                       Placeholder="Enter Student ID to Delete"
-                       PlaceholderColor="Wheat"
-                       BackgroundColor="Transparent"
-                       TextColor="Wheat"
-                       Keyboard="Numeric"
-                       HeightRequest="40"
-                       HorizontalOptions="FillAndExpand" />
+                   Placeholder="Enter Student ID to Delete"
+                   PlaceholderColor="Wheat"
+                   BackgroundColor="Transparent"
+                   TextColor="Wheat"
+                   Keyboard="Numeric"
+                   HeightRequest="40"
+                   HorizontalOptions="FillAndExpand" />
 
                 <Button Text="Delete Student"
-                        BackgroundColor="Transparent"
-                        BorderColor="Wheat"
-                        BorderWidth="1"
-                        TextColor="Wheat"
-                        CornerRadius="8"
-                        HeightRequest="40"
-                        Clicked="OnDeleteStudentClicked" />
+                    BackgroundColor="Transparent"
+                    BorderColor="Wheat"
+                    BorderWidth="1"
+                    TextColor="Wheat"
+                    CornerRadius="8"
+                    HeightRequest="40"
+                    Clicked="OnDeleteStudentClicked" />
 
             </VerticalStackLayout>
         </ScrollView>

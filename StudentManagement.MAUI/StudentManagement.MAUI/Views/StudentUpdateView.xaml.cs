@@ -1,37 +1,33 @@
 ﻿using StudentManagement.MAUI.ViewModels;
 
-namespace StudentManagement.MAUI.Views
+namespace StudentManagement.MAUI.Views;
+
+public partial class StudentUpdateView : ContentPage
 {
-    public partial class StudentUpdateView : ContentPage
+    private readonly StudentViewModel _viewModel;
+
+    public StudentUpdateView(int studentId)
     {
-        private readonly StudentViewModel _viewModel;
+        InitializeComponent();
+        _viewModel = new StudentViewModel();
+        BindingContext = _viewModel;
 
-        public StudentUpdateView(StudentViewModel viewModel)
-        {
-            InitializeComponent();
-            _viewModel = viewModel;
-            BindingContext = _viewModel;
+        LoadStudentAsync(studentId);
+    }
 
-            LoadStudentData();
-        }
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.LoadGenders();
+    }
 
-        private async void LoadStudentData()
-        {
-            await _viewModel.LoadGenders();
-        }
+    public async void LoadStudentAsync(int studentId)
+    {
+        await _viewModel.LoadStudentById(studentId);
+    }
 
-        private async void OnUpdateStudentClicked(object sender, EventArgs e)
-        {
-            bool isUpdated = await _viewModel.UpdateStudent();
-            if (isUpdated)
-            {
-                await DisplayAlert("Success", "Student details updated successfully!", "OK");
-                await Navigation.PopAsync();
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "Failed to update student.", "OK");
-            }
-        }
+    private async void OnUpdateStudentClicked(object sender, EventArgs e)
+    {
+        await _viewModel.UpdateStudent();
     }
 }

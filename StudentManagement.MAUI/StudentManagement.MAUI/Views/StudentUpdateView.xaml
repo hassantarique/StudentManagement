@@ -22,40 +22,23 @@
 
                 <Label Text="Update Student" FontSize="24" HorizontalOptions="Center" />
 
-                <Entry x:Name="NameEntry"
-                   Placeholder="Enter Student Name"
-                   Text="{Binding Name, Mode=TwoWay}" />
+                <Entry Text="{Binding StudentId}" IsReadOnly="True" />
+                <!--To Store id for update-->
 
-                <Picker x:Name="genderIdPicker"
-                    Title="Select Gender"
-                    ItemsSource="{Binding Genders}" 
-                    SelectedItem="{Binding SelectedGender, Mode=TwoWay}" 
-                    ItemDisplayBinding="{Binding GenderDescription}"
-                    TextColor="White"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="FillAndExpand"/>
+                <Entry Text="{Binding Name}" Placeholder="Name" />
 
-                <DatePicker Date="{Binding DateOfBirth, Mode=TwoWay}" />
+                <Picker Title="Select Gender" ItemsSource="{Binding Genders}"
+                    SelectedItem="{Binding SelectedGender, Mode=TwoWay}"
+                    ItemDisplayBinding="{Binding GenderDescription}" />
 
-                <Entry x:Name="HeightEntry"
-                   Placeholder="Enter Height"
-                   Keyboard="Numeric"
-                   Text="{Binding Height, Mode=TwoWay}" />
+                <DatePicker Date="{Binding DateOfBirth}" />
 
-                <Entry x:Name="WeightEntry"
-                   Placeholder="Enter Weight"
-                   Keyboard="Numeric"
-                   Text="{Binding Weight, Mode=TwoWay}" />
+                <Entry Text="{Binding Height}" Placeholder="Height" Keyboard="Numeric" />
+                <Entry Text="{Binding Weight}" Placeholder="Weight" Keyboard="Numeric" />
 
-                <Button Text="Update Student"
-                    BackgroundColor="Transparent"
-                    TextColor="White"
-                    BorderColor="Wheat"
-                    BorderWidth="1"
-                    Clicked="OnUpdateStudentClicked" />
-
+                <Button Text="Submit" 
+                    Clicked="OnUpdateStudentClicked"/>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
-
 </ContentPage>
