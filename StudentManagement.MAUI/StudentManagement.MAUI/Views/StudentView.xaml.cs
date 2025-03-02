@@ -61,7 +61,22 @@ namespace StudentManagement.MAUI.Views
 
         private async void OnDeleteStudentClicked(object sender, EventArgs e)
         {
-            
+            if (int.TryParse(DeleteStudentIdEntry.Text, out int studentId) && studentId > 0)
+            {
+                bool isDeleted = await _viewModel.DeleteStudentAsync(studentId);
+                if (isDeleted)
+                {
+                    await DisplayAlert("Success", "Student deleted successfully!", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Failed to delete student. Please try again.", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Invalid Input", "Please enter a valid Student ID.", "OK");
+            }
         }
     }
 }

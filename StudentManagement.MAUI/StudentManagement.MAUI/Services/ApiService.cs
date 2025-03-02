@@ -110,5 +110,19 @@ namespace StudentManagement.MAUI.Services
                 return false;
             }
         }
+
+        public async Task<bool> DeleteStudentAsync(int studentId)
+        {
+            try
+            {
+                var response = await client.DeleteAsync($"{baseUrl}Student/DeleteStudent?StudentID={studentId}");
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

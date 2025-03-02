@@ -197,5 +197,11 @@ namespace StudentManagement.MAUI.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", "Failed to update student.", "OK");
             }
         }
+
+        public async Task<bool> DeleteStudentAsync(int studentId)
+        {
+            return await _apiService.DeleteStudentAsync(studentId);
+        }
+
     }
 }
