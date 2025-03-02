@@ -37,23 +37,29 @@
                                    CornerRadius="10"
                                    HasShadow="True">
                                 <VerticalStackLayout Spacing="8">
+
+                                    <Label Text="{Binding ID}"
+                                           FontSize="18" 
+                                            TextColor="White" 
+                                            FontAttributes="Bold"/>
+
                                     <Label Text="{Binding Name}" 
                                            FontSize="18" 
                                            TextColor="White" 
                                            FontAttributes="Bold"/>
 
-                                    <Label Text="Gender:" TextColor="LightGray" FontSize="14"/>
-                                    <Label Text="{Binding Gender}" TextColor="White" FontSize="14"/>
+                                        <Label Text="Gender:" TextColor="LightGray" FontSize="14"/>
+                                        <Label Text="{Binding Gender}" TextColor="White" FontSize="14"/>
 
-                                    <Label Text="Date of Birth:" TextColor="LightGray" FontSize="14"/>
-                                    <Label Text="{Binding DateOfBirth, StringFormat='{0:yyyy-MM-dd}'}" 
+                                        <Label Text="Date of Birth:" TextColor="LightGray" FontSize="14"/>
+                                        <Label Text="{Binding DateOfBirth, StringFormat='{0:yyyy-MM-dd}'}" 
                                            TextColor="White" FontSize="14"/>
 
-                                    <Label Text="Height (ft):" TextColor="LightGray" FontSize="14"/>
-                                    <Label Text="{Binding Height}" TextColor="White" FontSize="14"/>
+                                        <Label Text="Height (ft):" TextColor="LightGray" FontSize="14"/>
+                                        <Label Text="{Binding Height}" TextColor="White" FontSize="14"/>
 
-                                    <Label Text="Weight (kg):" TextColor="LightGray" FontSize="14"/>
-                                    <Label Text="{Binding Weight}" TextColor="White" FontSize="14"/>
+                                        <Label Text="Weight (kg):" TextColor="LightGray" FontSize="14"/>
+                                        <Label Text="{Binding Weight}" TextColor="White" FontSize="14"/>
                                 </VerticalStackLayout>
                             </Frame>
                         </DataTemplate>

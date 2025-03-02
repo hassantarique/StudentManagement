@@ -59,6 +59,7 @@ namespace StudentManagement.ADODAL
                         {
                             student = new Student
                             {
+                                ID = (int)reader["ID"],
                                 Name = reader["Name"].ToString(),
                                 GenderID = (int)reader["GenderID"],
                                 DateOfBirth = (DateTime)reader["DateOfBirth"],

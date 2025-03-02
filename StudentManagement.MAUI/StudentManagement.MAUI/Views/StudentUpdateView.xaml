@@ -22,7 +22,7 @@
 
                 <Label Text="Update Student" FontSize="24" HorizontalOptions="Center" />
 
-                <Entry Text="{Binding StudentId}" IsReadOnly="True" />
+                <Entry Text="{Binding ID, Mode=TwoWay}" Placeholder="StudentId" IsReadOnly="True" />
                 <!--To Store id for update-->
 
                 <Entry Text="{Binding Name}" Placeholder="Name" />
