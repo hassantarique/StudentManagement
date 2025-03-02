@@ -7,7 +7,8 @@ namespace StudentManagement.MAUI.Services
     public class ApiService
     {
         HttpClient client = new HttpClient();
-        private const string baseUrl = "https://localhost:7064/api/";
+        //private const string baseUrl = "https://localhost:7064/api/";
+        private const string baseUrl = "https://motorsportapidev-cfgddcd9awb6gedr.uaenorth-01.azurewebsites.net/api/";
 
         public async Task<List<Student>> GetAllStudentsAsync()
         {
