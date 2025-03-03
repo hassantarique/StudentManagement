@@ -38,4 +38,12 @@ namespace StudentManagement.API.Middleware
             return context.Response.WriteAsync(errorResponseJson);
         }
     }
+
+    public static class ErrorHandlingMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseErrorHandlingMiddleware(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<ErrorHandlingMiddleware>();
+        }
+    }
 }
