@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen; //Allows modifying swagger documentation settings
 
-namespace StudentManagement.API
+namespace StudentManagement.API.Repositories
 {
     public static class SwaggerApiKeySecurity_1
     {

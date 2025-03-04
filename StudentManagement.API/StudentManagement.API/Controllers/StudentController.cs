@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentManagement.ADODAL;
+using StudentManagement.API.Repositories;
 using StudentManagement.DomainObjects;
 
 namespace StudentManagement.API.Controllers
 {
     [Route("api/Student")]
     [ApiController]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [TypeFilter(typeof(ApiKeyAttribute))]
+
     public class StudentController : Controller
     {
         [HttpGet("GetAllStudents")]
@@ -20,7 +24,7 @@ namespace StudentManagement.API.Controllers
         {
             Student student = new StudentDA().GetStudentByID(StudentID);
             return Ok(student);
-        } 
+        }
 
         [HttpPost("InsertStudent")]
         public ActionResult InsertStudent([FromBody] Student student)

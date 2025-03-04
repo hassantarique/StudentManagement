@@ -1,5 +1,5 @@
-using StudentManagement.API;
 using StudentManagement.API.Middleware;
+using StudentManagement.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +20,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
-app.UseApiKeyMiddleware_1();
+//app.UseApiKeyMiddleware_1();      // Disable when protecting Api with an Attribute
 app.UseErrorHandlingMiddleware();
 
 app.UseAuthorization();
