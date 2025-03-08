@@ -7,13 +7,14 @@ namespace StudentManagement.MAUI.Services
     public class ApiService
     {
         HttpClient client = new HttpClient();
-        //private const string baseUrl = "https://localhost:7064/api/";
-        private const string baseUrl = "https://motorsportapidev-cfgddcd9awb6gedr.uaenorth-01.azurewebsites.net/api/";
+        private const string baseUrl = "https://localhost:7064/api/";
+        //private const string baseUrl = "https://motorsportapidev-cfgddcd9awb6gedr.uaenorth-01.azurewebsites.net/api/";
 
         public async Task<List<Student>> GetAllStudentsAsync()
         {
             try
             {
+                await client.EnsureAccessTokenInHeader();
                 var response = await client.GetAsync(baseUrl + "Student/GetAllStudents");
 
                 if (!response.IsSuccessStatusCode) return new List<Student>();
@@ -31,6 +32,7 @@ namespace StudentManagement.MAUI.Services
         {
             try
             {
+                await client.EnsureAccessTokenInHeader();
                 var response = await client.GetAsync($"{baseUrl}Student/GetStudentById?StudentID={studentId}");
 
                 if (!response.IsSuccessStatusCode)
@@ -50,6 +52,7 @@ namespace StudentManagement.MAUI.Services
         {
             try
             {
+                await client.EnsureAccessTokenInHeader();
                 var response = await client.GetAsync(baseUrl + "Gender/GetAllGenders");
 
                 if (!response.IsSuccessStatusCode) return new List<Gender>();
@@ -71,6 +74,7 @@ namespace StudentManagement.MAUI.Services
         {
             try
             {
+                await client.EnsureAccessTokenInHeader();
                 var json = JsonConvert.SerializeObject(student);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -95,6 +99,7 @@ namespace StudentManagement.MAUI.Services
                 var json = JsonConvert.SerializeObject(student);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+                await client.EnsureAccessTokenInHeader();
                 var response = await client.PutAsync(baseUrl + "Student/UpdateStudent", content);
 
                 return response.IsSuccessStatusCode;
@@ -109,6 +114,7 @@ namespace StudentManagement.MAUI.Services
         {
             try
             {
+                await client.EnsureAccessTokenInHeader();
                 var response = await client.DeleteAsync($"{baseUrl}Student/DeleteStudent?StudentID={studentId}");
                 return response.IsSuccessStatusCode;
             }

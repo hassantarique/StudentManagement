@@ -8,7 +8,7 @@ namespace StudentManagement.API.Controllers
     [Route("api/Gender")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [TypeFilter(typeof(ApiKeyAttribute))]
+    //[TypeFilter(typeof(ApiKeyAttribute))]
 
     public class GenderController : Controller
     {
