@@ -7,6 +7,9 @@ body {
     background-image: url('./images/pattern.png');
 }
 
+#mainheader {
+    background-color: #a593c2;
+}
 
 #leftmenu {
     float: left;
@@ -14,18 +17,18 @@ body {
     margin-bottom: 20px;
 }
 
-#main {
+#main {                 /*Id selector because one element only*/
     float: right;
     width: 70%;
     margin-bottom: 20px;
 }
 
-footer {
+footer {                /*Tag selector because applies to all of the same type*/
     clear: both;
     width: 100%;
 }
 
-.searchbox {
+.searchbox {            /*Class selector, applies to elements with the class "searchbox"*/
     padding: 5px;
     margin: 10px 10px;
     width: 200px;
