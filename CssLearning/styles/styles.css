@@ -75,7 +75,7 @@ figcaption {
 
 h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1px;
-   /* text-transform: ;*/
+    /* text-transform: ;*/
     font-family: 'Great Vibes',Verdana, Geneva, sans-serif;
 }
 
@@ -83,4 +83,43 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Great Vibes", cursive;
     font-weight: 400;
     font-style: normal;
+}
+
+.promotion {
+    background-color: #23cea6;
+    color: white;
+    width: 450px;
+    text-align: center;
+    border: 10px solid #a693c2;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+    .promotion img {
+        width: 50%;
+    }
+
+.promotion-purple {
+    background-color: #a693c2;
+    border-color: #23cea6;
+}
+
+#sidebar-heading {
+    font-size: 24px;
+}
+
+#leftmenu a {
+    color: #199175;
+}
+
+#leftmenu a:hover {
+   color: #116552;
+}
+
+tr:nth-of-type(odd) {
+    background-color: #b4ddd3;
+}
+
+tr:nth-of-type(even) {
+    background-color: #e0d7ef;
 }
