@@ -1,0 +1,63 @@
+html {-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+/* GRID */
+.row {
+    /* clear: both;*/
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    /* float: left; */
+    padding: 0 2vw; 
+    margin: 0 0 .75rem 0;
+}
+.small-12 {
+    /* width: 100%;*/
+    flex-basis: 100%;
+}
+
+.limited {
+    max-width: 1140px; 
+    margin: auto;
+}
+
+
+
+footer {
+    background-color: #9b87b8;
+    font-size: 1.2rem;
+}
+footer h2 {
+    font-style: italic;
+    text-transform: uppercase;
+    margin: 1rem 0 .3rem 0;
+}
+footer ul {
+    list-style-type: none;
+    padding: 0;
+     
+}
+footer li {padding-bottom: .3rem;}
+
+
+
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+/*
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+*/
+}

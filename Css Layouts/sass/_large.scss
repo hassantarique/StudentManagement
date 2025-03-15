@@ -1,11 +1,5 @@
-@media only screen and (min-width: 1140px) {
-    
-    .large-3 {width: 25%;}
-  
-    nav ul {margin-left: 2vw;}
-    nav li {width:auto;}
-    nav a {padding: .7rem 1rem;}
-    
-    
-    
-} /* end of media query */
+/* 12 COLUMN GRID SYSTEM */
+@for $i from 1 through 12 {
+    $w:($i / 12) * 100%;
+    .large-#{$i} {flex-basis: $w;}	
+} // end loop
