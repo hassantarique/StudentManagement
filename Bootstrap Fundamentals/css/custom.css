@@ -1,6 +1,17 @@
 body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    background-image: url('../images/pattern.png');
-    background-repeat: repeat;
-  }
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-image: url('../images/pattern.png');
+  background-repeat: repeat;
+}
+
+.bg-primary {
+  background-color: #a593c2 !important;
+}
+
+/* cards */
+
+.card-footer {
+  background: transparent;
+  border-top: 0px;
+}
