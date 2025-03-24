@@ -1,24 +1,34 @@
-// Define number values
-let num1 = 6;
-let num2 = -1000000;
-let num3 = 1.234567;
+// Rounding number to an integer
+let num1 = 5.618345;
+console.log(`Round: ${Math.round(num1)}`);
+console.log(`Ceiling: ${Math.ceil(num1)}`);
+console.log(`Floor: ${Math.floor(num1)}`);
 
-// Defining big and small numbers
-let num4 = 1560000000000000000000;
-console.log(num4);
-let num5 = -0.0000000000000000021;
-console.log(num5);
+// Fixed
+let fixed = num1.toFixed(3);
+console.log(`Fixed Type: ${typeof(fixed)} Fixed Value: ${fixed}`);
 
-// Creating numbers with e-notation
-let num6 = 1.2e+10;
-console.log(num6);
+// Display in locale-specific format
+let num2 = 1_000_000;
+console.log(`USA: ${num2.toLocaleString('en-US')}`);
+console.log(`Greece: ${num2.toLocaleString('el-EL')}`);
+console.log(`Bangladesh: ${num2.toLocaleString('bg-BG')}`);
+console.log(`Punjab: ${num2.toLocaleString('pa-PA')}`);
 
-// How big and small can we get with the number type
-console.log(`Minimum Value: ${Number.MIN_VALUE}`);
-console.log(`Minimum Safe Integer: ${Number.MIN_SAFE_INTEGER}`);
-console.log(`Maximum Value: ${Number.MAX_VALUE}`);
-console.log(`Maximum Safe Integer: ${Number.MAX_SAFE_INTEGER}`);
+// Intl Format Currency
+let salary = 100000;
+let monthlySalary = salary / 12;
+console.log(`Monthly Salary: ${monthlySalary.toFixed(2)}`);
 
-// Creating BigInt's
-let bigInt1 = 1n;
-let bigInt2 = 1_560_000_000_000_000_000_000n;
+
+let formatter1 = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+console.log(`US Dollars: ${formatter1.format(monthlySalary)}`);
+
+let formatter2 = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
+console.log(`Euros: ${formatter2.format(monthlySalary)}`);
+
+let formatter3 = new Intl.NumberFormat('ja-JA', { style: 'currency', currency: 'JPY' });
+console.log(`Yen: ${formatter3.format(monthlySalary)}`);
+
+let formatter4 = new Intl.NumberFormat('zh-HK', { style: 'currency', currency: 'HKD' });
+console.log(`Hong Kong Dollars: ${formatter4.format(monthlySalary)}`);
