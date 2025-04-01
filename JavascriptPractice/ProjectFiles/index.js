@@ -86,27 +86,32 @@ import createPrompt from 'prompt-sync';
 let prompt = createPrompt();
 
 const logEmployee = (employee) => {
-  Object.entries(employee).forEach(entry => {
-    console.log(`${entry[0]}: ${entry[1]}`);
-  });
-}
+  Object.entries(employee).forEach(
+    entry => {
+      console.log(`${entry[0]}: ${entry[0]}}`); //key-value pair
+    }
+  );
+};
 
-function getInput(promptText, validator, transformer) {
+function getInput(promptText, validator, transformer){
   let value = prompt(promptText);
-  if (validator && !validator(value)) {
-    console.error(`--Invalid input`);
+
+  if(validator && !validator(value)){
+    console.error(`--Invalid Input`);
     return getInput(promptText, validator, transformer);
   }
-  if(transformer) {
+
+  if(transformer){
     return transformer(value);
   }
+
   return value;
 }
 
 // Validator functions ---------------------------------------------------
 
 const isStringInputValid = (input) => {
-  return (input) ? true : false;
+  return input ? true : false;
 }
 
 const isBooleanInputValid = function (input) {
@@ -114,9 +119,9 @@ const isBooleanInputValid = function (input) {
 }
 
 const isIntegerValid = (min, max) => {
-  return (input) => {
+  return(input) => {
     let numValue = Number(input);
-    if (!Number.isInteger(numValue) || numValue < min || numValue > max) {
+    if(!Number.isInteger(numValue) || numValue < min || numValue > max) {
       return false;
     }
     return true;
