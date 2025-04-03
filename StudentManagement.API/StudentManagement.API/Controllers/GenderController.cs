@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentManagement.ADODAL;
-using StudentManagement.API.Repositories;
+//using StudentManagement.API.Repositories;
 using StudentManagement.DomainObjects;
 
 namespace StudentManagement.API.Controllers
 {
     [Route("api/Gender")]
     [ApiController]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
     //[TypeFilter(typeof(ApiKeyAttribute))]
 
     public class GenderController : Controller
