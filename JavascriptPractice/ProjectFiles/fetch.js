@@ -1,14 +1,16 @@
-const myHeaders = new Headers();
-myHeaders.append("apikey", "255113c83c4f798f72a490b404b8ab63");
+// const myHeaders = new Headers();
+// myHeaders.append("apikey", "");
+
+let apiUrl = "https://motorsportapidev-cfgddcd9awb6gedr.uaenorth-01.azurewebsites.net/api/";
 
 const requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
+    method: 'GET'
+    // headers: myHeaders,
+    // redirect: 'follow'
 };
 
 try{
-    const result = await fetch("https://api.apilayer.com/exchangerates_data/latest?base=USD", requestOptions);
+    const result = await fetch(apiUrl + "Student/GetAllStudents", requestOptions);
     const resultObj = await result.json();
     console.log(JSON.stringify(resultObj, null, 2));
 }
