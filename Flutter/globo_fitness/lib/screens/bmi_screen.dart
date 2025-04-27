@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:globo_fitness/main.dart';
-import 'package:globo_fitness/screens/intro_screen.dart';
 import 'package:globo_fitness/shared/menu_bottom.dart';
 import 'package:globo_fitness/shared/menu_drawer.dart';
 

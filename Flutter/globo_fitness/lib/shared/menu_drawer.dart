@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:globo_fitness/screens/login_screen.dart';
+import 'package:globo_fitness/screens/registerDetails_screen.dart';
 import '../screens/bmi_screen.dart';
 import '../screens/intro_screen.dart';
 
@@ -18,8 +20,8 @@ class MenuDrawer extends StatelessWidget {
     final List<String> menuTitles = [
       'Home',
       'BMI Calculator',
-      'Weather',
-      'Training'
+      'Login Page',
+      'Register'
     ];
     List<Widget> menuItems = [];
     menuItems.add(DrawerHeader(
@@ -41,6 +43,14 @@ class MenuDrawer extends StatelessWidget {
             case 'BMI Calculator':
               screen = BmiScreen();
               break;
+              case 'Login Page':
+              screen = LoginPage();
+              break;
+              case 'Register':
+              screen = RegisterPage();
+              break;
+            default:
+              screen = IntroScreen();
           }
           Navigator.of(context).pop();
           Navigator.of(context)
