@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:globo_fitness/shared/menu_bottom.dart';
 import 'package:globo_fitness/shared/menu_drawer.dart';
 
 class BmiScreen extends StatefulWidget {
@@ -38,7 +37,6 @@ class _BmiScreenState extends State<BmiScreen> {
     return Scaffold(
       appBar: AppBar(title: Text('BMI Calculator')),
       drawer: MenuDrawer(),
-      bottomNavigationBar: MenuBottom(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
