@@ -12,13 +12,13 @@ class GlobeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
-      routes: {
-        '/': (context) => IntroScreen(),
-        '/bmi': (context) => BmiScreen(),
-      },
-      initialRoute: '/',
-    );
+        theme: ThemeData(primarySwatch: Colors.blueGrey),
+        routes: {
+          '/': (context) => IntroScreen(),
+          '/bmi': (context) => BmiScreen()
+        }, 
+        initialRoute: '/',
+        );
     //home: IntroScreen());
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:globo_fitness/shared/menu_bottom.dart';
 import 'package:globo_fitness/shared/menu_drawer.dart';
 
 class BmiScreen extends StatefulWidget {
@@ -35,8 +36,11 @@ class _BmiScreenState extends State<BmiScreen> {
         'Please insert your weight in ' + ((isMetric) ? 'kilos' : 'pounds');
 
     return Scaffold(
-      appBar: AppBar(title: Text('BMI Calculator')),
+      appBar: AppBar(
+        title: Text('BMI Calculator'),
+      ),
       drawer: MenuDrawer(),
+      bottomNavigationBar: MenuBottom(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -45,13 +49,19 @@ class _BmiScreenState extends State<BmiScreen> {
             ToggleButtons(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text('Metric', style: TextStyle(fontSize: fontSize)),
-                ),
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      'Metric',
+                      style: TextStyle(
+                        fontSize: fontSize,
+                      ),
+                    )),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text('Imperial', style: TextStyle(fontSize: fontSize)),
-                ),
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      'Imperial',
+                      style: TextStyle(fontSize: fontSize),
+                    )),
               ],
               isSelected: isSelected,
               onPressed: toggleMeasure,
@@ -59,7 +69,9 @@ class _BmiScreenState extends State<BmiScreen> {
             TextField(
               controller: txtHeight,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(hintText: heightMessage),
+              decoration: InputDecoration(
+                hintText: heightMessage,
+              ),
             ),
             TextField(
               controller: txtWeight,
@@ -67,13 +79,15 @@ class _BmiScreenState extends State<BmiScreen> {
               decoration: InputDecoration(hintText: weightMessage),
             ),
             ElevatedButton(
-              onPressed: findBMI,
-              child: Text(
-                'Calculate BMI',
-                style: TextStyle(fontSize: fontSize),
-              ),
-            ),
-            Text(result, style: TextStyle(fontSize: fontSize)),
+                onPressed: findBMI,
+                child: Text('Calculate BMI',
+                    style: TextStyle(
+                      fontSize: fontSize,
+                    ))),
+            Text(result,
+                style: TextStyle(
+                  fontSize: fontSize,
+                ))
           ],
         ),
       ),
