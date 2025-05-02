@@ -21,44 +21,51 @@ class MenuDrawer extends StatelessWidget {
       'Home',
       'BMI Calculator',
       'Weather',
-      'Training'
+      'Training',
     ];
     List<Widget> menuItems = [];
-    menuItems.add(DrawerHeader(
+
+    menuItems.add(
+      const DrawerHeader(
         decoration: BoxDecoration(color: Colors.blueGrey),
-        child: Text('Globo Fitness',
-            style: TextStyle(color: Colors.white, fontSize: 28))));
-    menuTitles.forEach((element) {
-      Widget screen = Container();
-      menuItems.add(ListTile(
-        title: Text(
-          element,
-          style: TextStyle(fontSize: 18),
+        child: Text(
+          'Globo Fitness',
+          style: TextStyle(color: Colors.white, fontSize: 28),
         ),
-        onTap: () {
-          switch (element) {
-            case 'Home':
-              screen = IntroScreen();
-              break;
-            case 'BMI Calculator':
-              screen = BmiScreen();
-              break;
-            case 'Weather':
-              screen = WeatherScreen();
-              break;
-              case 'Training':
-              screen = SessionsScreen();
-              break;
-          }
-          Navigator.of(context).pop();
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => screen));
-        },
-      ));
-    });
+      ),
+    );
+
+    for (var element in menuTitles) {
+      Widget screen = const IntroScreen(); // Default fallback
+      switch (element) {
+        case 'Home':
+          screen = const IntroScreen();
+          break;
+        case 'BMI Calculator':
+          screen = const BmiScreen();
+          break;
+        case 'Weather':
+          screen = const WeatherScreen();
+          break;
+        case 'Training':
+          screen = const SessionsScreen();
+          break;
+      }
+
+      menuItems.add(
+        ListTile(
+          title: Text(element, style: const TextStyle(fontSize: 18)),
+          onTap: () {
+            Navigator.of(context).pop(); // Close drawer
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => screen),
+              (route) => false, // Clears the stack
+            );
+          },
+        ),
+      );
+    }
+
     return menuItems;
   }
-
-  
-
 }
