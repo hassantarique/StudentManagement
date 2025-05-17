@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "User Profile";
+}
+<h1>User Profile</h1>
+<p>Region: @ViewBag.Region</p>
+<p>Username: @ViewBag.Username</p>
+
+@* 
+    SlugifyTransformer	Converts route tokens to kebab-case
+    RegionConstraint	Allows only specific regional route values
+    Regex Constraint	Enforces strict format on username in URL
+*@
