@@ -2,6 +2,7 @@
 using Globomatics.Infrastructure.Repositories;
 using Globomatics.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
 namespace Globomatics.Web.Controllers;
@@ -12,7 +13,7 @@ public class HomeController : Controller
 
     private readonly IRepository<Product> productRepository;
 
-    public HomeController(IRepository<Product> productRepository,
+    public HomeController(IRepository<Product> productRepository, 
         ILogger<HomeController> logger)
     {
         this.productRepository = productRepository;
@@ -21,23 +22,18 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        try
-        {
-            var products = productRepository.All();
-
-            return View(products);
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "Could not load products");
-        }
-
-        return Error();
+        return View();
     }
 
-    [Route("/details/{productId}/{slug}")]
-    public IActionResult TicketDetails(Guid productId, string? slug)
+    [Route("/details/{productId:guid}/{slug:slugTransform}")]
+    public IActionResult TicketDetails(Guid productId, 
+        [RegularExpression("^[a-zA-Z0-9- ]+$")] string slug)
     {
+        if(!ModelState.IsValid)
+        {
+            return BadRequest();
+        }
+
         var product = productRepository.Get(productId);
 
         return View(product);

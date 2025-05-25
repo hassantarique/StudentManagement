@@ -14,9 +14,9 @@ namespace Globomatics.Web.Controllers
     {
         private readonly GlobomanticsContext _context;
 
-        public CustomersController()
+        public CustomersController(GlobomanticsContext context)
         {
-            _context = new();
+            _context = context;
         }
 
         // GET: Customers
